@@ -20,14 +20,6 @@ router.post("/send-otp", async (req, res) => {
   const otp = generateOTP();
   otpStore[usn] = otp;
 
-  // Set up mail transporter
-//   const transporter = nodemailer.createTransport({
-//     service: "gmail",
-//     auth: {
-//       user: process.env.MAIL_USER,
-//       pass: process.env.MAIL_PASS,
-//     },
-//   });
 
 const transporter = nodemailer.createTransport({
   host: process.env.MAIL_HOST,
@@ -47,14 +39,7 @@ const transporter = nodemailer.createTransport({
     text: `Hi ${name},\n\nYour OTP is: ${otp}\n\n- OTP Login System`,
   };
 
-//   try {
-//     await transporter.sendMail(mailOptions);
-//     res.status(200).json({ message: "OTP sent" });
-//   } catch (error) {
-//     console.error("Email error:", error);
-//     res.status(500).json({ message: "Failed to send email" });
-//   }
-// });
+
 
 
   try {
